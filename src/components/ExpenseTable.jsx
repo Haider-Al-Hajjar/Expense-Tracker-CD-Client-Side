@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 
 export const ExpenseTable = () => {
-    const [expense, setExpense] = useState([]); // at the bottom, change aptNumber, desc, email, etc to correct data for expenseTracker.
+    const [expense, setExpense] = useState([]); // at the bottom, get Price & description working after Jose fixes up the back end.
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,13 +47,13 @@ export const ExpenseTable = () => {
                             Expense Id
                         </TableCell>
                         <TableCell>
-                            Price
+                            Price TBD
                         </TableCell>
                         <TableCell>
                             Program
                         </TableCell>
                         <TableCell>
-                            Description
+                            Description TBD
                         </TableCell>
                         <TableCell>
                             Date Added
@@ -84,16 +84,16 @@ export const ExpenseTable = () => {
                                         {expense.lastName}
                                     </TableCell>
                                     <TableCell>
-                                        {expense.email}
+                                        {expense.items}
                                     </TableCell>
                                     <TableCell>
-                                        {expense.aptNumber}
+                                        {expense.purpose}
                                     </TableCell>
                                     <TableCell>
-                                        {expense.description}
+                                        {expense.dateOfExpense}
                                     </TableCell>
                                     <TableCell>
-                                        {expense.date}
+                                        {expense.lastUpdatedDateOfExpense}
                                     </TableCell>
                                     <TableCell align="right">
                                         <IconButton component="a" onClick={() => goToUpdate("update/" + expense.id)}>

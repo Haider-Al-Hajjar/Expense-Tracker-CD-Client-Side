@@ -18,20 +18,23 @@ const theme = createTheme();
 export const Update = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const [firstName, setFirstName] = useState('') // update aptNumber, email, desc, etc with correct data names
+    const [firstName, setFirstName] = useState('') // add price & description when Jose gets around to completing the back end.
     const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [aptNumber, setAptNumber] = useState('')
-    const [description, setDescription] = useState('')
+    const [items, setItems] = useState('')
+    const [purpose, setPurpose] = useState('')
+    const [dateOfExpense, setDateOfExpense] = useState('')
+    const [lastUpdatedDateOfExpense, setLastUpdatedDateOfExpense] = useState('')
+
     useEffect(() => {
         expenseService.getById(id)
             .then(response => {
                 const user = response.data;
                 setFirstName(user.firstName);
                 setLastName(user.lastName);
-                setEmail(user.email);
-                setAptNumber(user.aptNumber);
-                setDescription(user.description);
+                setItems(user.items);
+                setPurpose(user.purpose);
+                setDateOfExpense(user.dateOfExpense);
+                setLastUpdatedDateOfExpense(user.lastUpdatedDateOfExpense);
             })
     }, []);
 
@@ -41,9 +44,10 @@ export const Update = () => {
         const expense = {
             firstName: data.get('firstName'),
             lastName: data.get('lastName'),
-            email: data.get('email'),
-            aptNumber: data.get('aptNumber'),
-            description: data.get('description'),
+            items: data.get('items'),
+            purpose: data.get('purpose'),
+            dateOfExpense: data.get('dateOfExpense'),
+            lastUpdatedDateOfExpense: data.get('lastUpdatedDateOfExpense'),
 
         };
         console.log(expense)
@@ -100,39 +104,50 @@ export const Update = () => {
                                 <TextField
                                     required
                                     fullWidth
-                                    id="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
+                                    id="items"
+                                    value={items}
+                                    onChange={(e) => setItems(e.target.value)}
+                                    label="Items"
+                                    name="items"
+                                    autoComplete="items"
                                 />
                             </Grid>
                             <Grid item xs={12} sm={4}>
                                 <TextField
                                     required
                                     fullWidth
-                                    id="aptNumber"
-                                    value={aptNumber}
-                                    onChange={(e) => setAptNumber(e.target.value)}
-                                    label="Apartment Number"
-                                    name="aptNumber"
-                                    autoComplete="aptNumber"
+                                    id="purpose"
+                                    value={purpose}
+                                    onChange={(e) => setPurpose(e.target.value)}
+                                    label="Purpose"
+                                    name="purpose"
+                                    autoComplete="purpose"
                                 />
                             </Grid>
                             <Grid item xs={12} sm={8}>
                                 <TextField
                                     required
                                     fullWidth
-                                    id="description"
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                    label="Description"
-                                    name="description"
-                                    autoComplete="description"
+                                    id="dateOfExpense"
+                                    value={dateOfExpense}
+                                    onChange={(e) => setDateOfExpense(e.target.value)}
+                                    label="Date of Expense"
+                                    name="dateOfExpense"
+                                    autoComplete="dateOfExpense"
                                 />
                             </Grid>
-
+                            <Grid item xs={12} sm={8}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="lastUpdatedDateOfExpense"
+                                    value={lastUpdatedDateOfExpense}
+                                    onChange={(e) => setLastUpdatedDateOfExpense(e.target.value)}
+                                    label="Last Updated Date Of Expense"
+                                    name="lastUpdatedDateOfExpense"
+                                    autoComplete="lastUpdatedDateOfExpense"
+                                />
+                            </Grid>
                         </Grid>
                         <Button
                             type="submit"
