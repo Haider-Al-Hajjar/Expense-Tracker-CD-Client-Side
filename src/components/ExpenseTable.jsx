@@ -68,45 +68,69 @@ export const ExpenseTable = () => {
                 </TableHead>
                 <TableBody style={{ backgroundcolor: "white" }}>
                     {
-                        expense.map((expense) => {
-                            return (
-                                <TableRow
-                                    hover
-                                    key={expense.id}
-                                >
-                                    <TableCell>
-                                        {expense.id}
-                                    </TableCell>
-                                    <TableCell>
-                                        {expense.firstName}
-                                    </TableCell>
-                                    <TableCell>
-                                        {expense.lastName}
-                                    </TableCell>
-                                    <TableCell>
-                                        {expense.items}
-                                    </TableCell>
-                                    <TableCell>
-                                        {expense.purpose}
-                                    </TableCell>
-                                    <TableCell>
-                                        {expense.dateOfExpense}
-                                    </TableCell>
-                                    <TableCell>
-                                        {expense.lastUpdatedDateOfExpense}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        <IconButton component="a" onClick={() => goToUpdate("update/" + expense.id)}>
-                                            <EditIcon />
-                                        </IconButton>
-                                        <IconButton component="a" onClick={() => deleteExpense(expense.id)}>
-                                            <DeleteIcon />
-                                        </IconButton>
-                                    </TableCell>
+                        <TableRow>
+                            <TableCell>
+                                Numba One
+                            </TableCell>
+                            <TableCell>
+                                304$
+                            </TableCell>
+                            <TableCell>
+                                Porcupine Program
+                            </TableCell>
+                            <TableCell>
+                                <i>the summoning is upon us</i>
+                            </TableCell>
+                            <TableCell>
+                                2024-5-22
+                            </TableCell>
+                            <TableCell>
+                                2024-5-today
+                            </TableCell>
+                            <TableCell>
+                                Delete / Edit
+                            </TableCell>
+                        </TableRow>
 
-                                </TableRow>
-                            )
-                        })
+                        // expense.map((expense) => {
+                        //     return (
+                        //         <TableRow
+                        //             hover
+                        //             key={expense.id}
+                        //         >
+                        //             <TableCell>
+                        //                 {expense.id}
+                        //             </TableCell>
+                        //             <TableCell>
+                        //                 {expense.firstName}
+                        //             </TableCell>
+                        //             <TableCell>
+                        //                 {expense.lastName}
+                        //             </TableCell>
+                        //             <TableCell>
+                        //                 {expense.items}
+                        //             </TableCell>
+                        //             <TableCell>
+                        //                 {expense.purpose}
+                        //             </TableCell>
+                        //             <TableCell>
+                        //                 {expense.dateOfExpense}
+                        //             </TableCell>
+                        //             <TableCell>
+                        //                 {expense.lastUpdatedDateOfExpense}
+                        //             </TableCell>
+                        //             <TableCell align="right">
+                        //                 <IconButton component="a" onClick={() => goToUpdate("update/" + expense.id)}>
+                        //                     <EditIcon />
+                        //                 </IconButton>
+                        //                 <IconButton component="a" onClick={() => deleteExpense(expense.id)}>
+                        //                     <DeleteIcon />
+                        //                 </IconButton>
+                        //             </TableCell>
+
+                        //         </TableRow>
+                        //     )
+                        // })
                     }
                 </TableBody>
             </Table>
