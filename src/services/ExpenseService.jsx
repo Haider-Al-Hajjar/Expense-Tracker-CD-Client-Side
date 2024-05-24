@@ -1,23 +1,23 @@
 import axios from 'axios';
 
-const EXPENSE_BASE_API_URL = 'http://localhost:8080/api/v1/maintenanceRequest';
+const BASE_API_URL = 'http://localhost:8080/';
 
 export function getAllExpense() {
-    return axios.get(EXPENSE_BASE_API_URL);
+    return axios.get(`${BASE_API_URL}expense`);
 }
 
 export function createExpense(expense) {
-    return axios.post(EXPENSE_BASE_API_URL, expense);
+    return axios.post(`${BASE_API_URL}expense`, expense);
 }
 
 export function getById(id) {
-    return axios.get(`${EXPENSE_BASE_API_URL}/${id}`);
+    return axios.get(`${BASE_API_URL}expense/${id}`);
 }
 
 export function updateExpense(id, expense) {
-    return axios.put(`${EXPENSE_BASE_API_URL}/${id}`, expense);
+    return axios.put(`${BASE_API_URL}expense/${id}`, expense);
 }
 
 export function deleteExpense(id) {
-    return axios.delete(`${EXPENSE_BASE_API_URL}/${id}`);
+    return axios.delete(`${BASE_API_URL}expense/${id}`);
 }

@@ -124,30 +124,6 @@ export const Update = () => {
                                     autoComplete="purpose"
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={8}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="dateOfExpense"
-                                    value={dateOfExpense}
-                                    onChange={(e) => setDateOfExpense(e.target.value)}
-                                    label="Date of Expense"
-                                    name="dateOfExpense"
-                                    autoComplete="dateOfExpense"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={8}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="lastUpdatedDateOfExpense"
-                                    value={lastUpdatedDateOfExpense}
-                                    onChange={(e) => setLastUpdatedDateOfExpense(e.target.value)}
-                                    label="Last Updated Date Of Expense"
-                                    name="lastUpdatedDateOfExpense"
-                                    autoComplete="lastUpdatedDateOfExpense"
-                                />
-                            </Grid>
                         </Grid>
                         <Button
                             type="submit"

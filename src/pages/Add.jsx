@@ -98,7 +98,7 @@ export function Add() {
                                     autoComplete="items"
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={4}>
+                            <Grid item xs={12} >
                                 <TextField
                                     required
                                     fullWidth
@@ -110,7 +110,7 @@ export function Add() {
                                     autoComplete="purpose"
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={8}>
+                            {/* <Grid item xs={12} sm={8}>
                                 <TextField
                                     required
                                     fullWidth
@@ -133,7 +133,7 @@ export function Add() {
                                     name="lastUpdatedDateOfExpense"
                                     autoComplete="lastUpdatedDateOfExpense"
                                 />
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                         <Button
                             type="submit"

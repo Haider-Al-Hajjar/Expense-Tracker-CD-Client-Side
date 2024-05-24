@@ -11,6 +11,7 @@ export const Expense = () => {
 
     return (
         <>
+
             <Button variant="outlined" onClick={e => addUser()} style={{ color: "white" }}>Add User</Button>
             <ExpenseTable />
         </>
