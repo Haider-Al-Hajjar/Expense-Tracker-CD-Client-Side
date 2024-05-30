@@ -5,6 +5,7 @@ import { Expense } from "./pages/Expense";
 import { NoContent } from "./pages/NoContent";
 import { Update } from "./pages/Update";
 import { Add } from "./pages/Add";
+import Login from "./pages/Firebase/Login";
 function App() {
 
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="*" element={<NoContent />} />
         </Routes>
       </BrowserRouter>
-
+      <Login></Login>
     </Container>
   );
 }
