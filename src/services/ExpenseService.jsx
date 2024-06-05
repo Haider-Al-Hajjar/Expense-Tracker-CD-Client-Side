@@ -21,3 +21,7 @@ export function updateExpense(id, expense) {
 export function deleteExpense(id) {
     return axios.delete(`${BASE_API_URL}expense/${id}`);
 }
+
+export function createUser(user) {
+    return axios.post(`${BASE_API_URL}user`, user)
+}

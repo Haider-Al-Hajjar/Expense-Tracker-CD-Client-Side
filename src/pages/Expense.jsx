@@ -9,10 +9,14 @@ export const Expense = () => {
         navigate("/add")
     }
 
+    function login() {
+        navigate("/login")
+    }
     return (
         <>
 
             <Button variant="outlined" onClick={e => addUser()} style={{ color: "white" }}>Add User</Button>
+            <Button variant="outlined" onClick={e => login()} style={{ color: "white" }}>Login</Button>
             <ExpenseTable />
         </>
     )

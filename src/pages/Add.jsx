@@ -16,13 +16,10 @@ const theme = createTheme();
 
 export function Add() {
     const navigate = useNavigate();
-    const { id } = useParams();
-    const [firstName, setFirstName] = useState('')// add price & descr when Jose gets around to the back end
+    const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [items, setItems] = useState('')
     const [purpose, setPurpose] = useState('')
-    const [dateOfExpense, setDateOfExpense] = useState('')
-    const [lastUpdatedDateOfExpense, setLastUpdatedDateOfExpense] = useState('')
 
 
     const handleSubmit = (event) => {
@@ -32,9 +29,7 @@ export function Add() {
             firstName: data.get('firstName'),
             lastName: data.get('lastName'),
             items: data.get('items'),
-            purpose: data.get('purpose'),
-            dateOfExpense: data.get('dateOfExpense'),
-            lastUpdatedDateOfExpense: data.get('lastUpdatedDateOfExpense'),
+            purpose: data.get('purpose')
         };
 
         expenseService.createExpense(expense)
@@ -110,30 +105,6 @@ export function Add() {
                                     autoComplete="purpose"
                                 />
                             </Grid>
-                            {/* <Grid item xs={12} sm={8}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="dateOfExpense"
-                                    value={dateOfExpense}
-                                    onChange={(e) => setDateOfExpense(e.target.value)}
-                                    label="DateOfExpense"
-                                    name="dateOfExpense"
-                                    autoComplete="dateOfExpense"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={8}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="lastUpdatedDateOfExpense"
-                                    value={lastUpdatedDateOfExpense}
-                                    onChange={(e) => setLastUpdatedDateOfExpense(e.target.value)}
-                                    label="LastUpdatedDateOfExpense"
-                                    name="lastUpdatedDateOfExpense"
-                                    autoComplete="lastUpdatedDateOfExpense"
-                                />
-                            </Grid> */}
                         </Grid>
                         <Button
                             type="submit"

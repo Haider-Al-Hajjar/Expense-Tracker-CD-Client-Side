@@ -1,6 +1,10 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as expenseService from '../../services/ExpenseService';
+
+const navigate = useNavigate();
 
 function Login() {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -8,13 +12,24 @@ function Login() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [user, setUser] = useState({});
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    })
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            console.log("user Changed");
+        })
+    }, [])
     const register = async () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-            console.log(user)
+            console.log(user.user)
+            const expenseServiceUser = {
+                uid: user.user.uid,
+                name: user.user.email
+            }
+            expenseService.createUser(expenseServiceUser)
+            // .then(response => {
+            //     navigate("/");
+            // })
         }
         catch (error) {
             console.log(error.message)
@@ -23,8 +38,8 @@ function Login() {
 
     const login = async () => {
         try {
-            const user = await signInWithEmailAndPasswordWithEmailAndPassword(auth, loginEmail, loginPassword)
-            console.log(user)
+            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+            console.log(user.user)
         }
         catch (error) {
             console.log(error.message)

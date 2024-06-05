@@ -71,30 +71,6 @@ export const ExpenseTable = () => {
                 </TableHead>
                 <TableBody style={{ backgroundcolor: "white !important" }}>
                     {
-                        // <TableRow>
-                        //     <TableCell>
-                        //         Numba One
-                        //     </TableCell>
-                        //     <TableCell>
-                        //         304$
-                        //     </TableCell>
-                        //     <TableCell>
-                        //         Porcupine Program
-                        //     </TableCell>
-                        //     <TableCell>
-                        //         <i>the summoning is upon us</i>
-                        //     </TableCell>
-                        //     <TableCell>
-                        //         2024-5-22
-                        //     </TableCell>
-                        //     <TableCell>
-                        //         2024-5-today
-                        //     </TableCell>
-                        //     <TableCell>
-                        //         Delete / Edit
-                        //     </TableCell>
-                        // </TableRow>
-
                         expense.map((expense) => {
                             return (
                                 <TableRow

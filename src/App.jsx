@@ -16,9 +16,9 @@ function App() {
           <Route path="/update/:id" element={<Update />} />
           <Route path="/add" element={<Add />} />
           <Route path="*" element={<NoContent />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
-      <Login></Login>
     </Container>
   );
 }
