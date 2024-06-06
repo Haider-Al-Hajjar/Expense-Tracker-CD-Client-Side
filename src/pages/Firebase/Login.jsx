@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as expenseService from '../../services/ExpenseService';
 
-const navigate = useNavigate();
 
 function Login() {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -18,18 +17,20 @@ function Login() {
             console.log("user Changed");
         })
     }, [])
+    const navigate = useNavigate();
+
     const register = async () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-            console.log(user.user)
+
             const expenseServiceUser = {
                 uid: user.user.uid,
                 name: user.user.email
             }
             expenseService.createUser(expenseServiceUser)
-            // .then(response => {
-            //     navigate("/");
-            // })
+                .then(response => {
+                    console.log(response.data)
+                })
         }
         catch (error) {
             console.log(error.message)

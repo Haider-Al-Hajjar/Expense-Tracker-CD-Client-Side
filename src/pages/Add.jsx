@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as expenseService from '../services/ExpenseService';
 import { useNavigate } from "react-router-dom";
+import { auth } from "./Firebase/firebase-config";
 
 const theme = createTheme();
 
