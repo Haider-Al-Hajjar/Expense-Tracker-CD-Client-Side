@@ -10,10 +10,11 @@ function Login() {
     const [registerPassword, setRegisterPassword] = useState("");
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-    const [user, setUser] = useState({});
+    const [firebaseUser, setFirebaseUser] = useState({});
+    const [expenseServiceUser, setExpenseServiceUser] = useState();
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+            setFirebaseUser(currentUser);
             console.log("user Changed");
         })
     }, [])
@@ -23,14 +24,20 @@ function Login() {
         try {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
 
-            const expenseServiceUser = {
+            const userToBeCreated = {
                 uid: user.user.uid,
                 name: user.user.email
             }
-            expenseService.createUser(expenseServiceUser)
+            console.log(userToBeCreated)
+            expenseService.createUser(userToBeCreated)
                 .then(response => {
                     console.log(response.data)
+                    setExpenseServiceUser(response.data)
+                }).then(response => {
+                    navigate(`/${expenseServiceUser.id}`)
                 })
+
+            // save response to a use state with a new user variable & link back to the app page with the id of that user.
         }
         catch (error) {
             console.log(error.message)
@@ -76,7 +83,7 @@ function Login() {
                 <button onClick={login}>Login </button>
             </div>
             <h3> User Logged in</h3>
-            {user?.email}
+            {firebaseUser?.email}
             <button onClick={logout}>Sign Out </button>
         </div>
     )

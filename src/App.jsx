@@ -6,10 +6,12 @@ import { NoContent } from "./pages/NoContent";
 import { Update } from "./pages/Update";
 import { Add } from "./pages/Add";
 import Login from "./pages/Firebase/Login";
+import Context from "./components/Context"
 function App() {
 
   return (
     <Container maxWidth="md">
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Expense />} />

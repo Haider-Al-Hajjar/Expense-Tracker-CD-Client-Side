@@ -26,7 +26,7 @@ export const ExpenseTable = () => {
         navigate(`/${id}`);
     }
     function requestFromAPI() {
-        expenseService.getAllExpense()
+        expenseService.getAllExpense()// get user by id, and then use response.data.expenses to populate the table.
             .then(res => {
                 setExpense(res.data);
             })
