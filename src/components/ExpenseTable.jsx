@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from "react-router-dom";
@@ -11,11 +11,11 @@ import {
     TableHead,
     TableRow,
 } from '@mui/material';
+import Context from './Context';
 
 export const ExpenseTable = () => {
     const [expense, setExpense] = useState([]); // at the bottom, get Price & description working after Jose fixes up the back end.
     const navigate = useNavigate();
-
     useEffect(() => {
         expenseService.getAllExpense()
             .then(res => {
@@ -37,9 +37,10 @@ export const ExpenseTable = () => {
                 requestFromAPI();
             })
     }
-
+    const userData = useContext(Context)
     return (
         <div >
+            <p> Current email = {userData.email}</p>
             <Table sx={{ minWidth: 1000 }} style={{ maxWidth: 1200 + "px", backgroundcolor: "gray", fontSize: 2000 + "px", color: "white" }}>
                 <TableHead sx={{}}>
                     <TableRow>

@@ -25,3 +25,9 @@ export function deleteExpense(id) {
 export function createUser(user) {
     return axios.post(`${BASE_API_URL}user`, user)
 }
+export function getUserById(id) {
+    return axios.get(`${BASE_API_URL}user/${id}`)
+}
+export function getUserByUid(uid) {
+    return axios.get(`${BASE_API_URL}user/${uid}`)
+}

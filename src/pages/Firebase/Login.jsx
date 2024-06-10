@@ -1,8 +1,9 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as expenseService from '../../services/ExpenseService';
+import Context from "../../components/Context";
 
 
 function Login() {
@@ -19,7 +20,7 @@ function Login() {
         })
     }, [])
     const navigate = useNavigate();
-
+    let userData = useContext(Context)
     const register = async () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
@@ -33,6 +34,8 @@ function Login() {
                 .then(response => {
                     console.log(response.data)
                     setExpenseServiceUser(response.data)
+                    userData.email = response.data.email
+
                 }).then(response => {
                     navigate(`/${expenseServiceUser.id}`)
                 })
@@ -47,7 +50,11 @@ function Login() {
     const login = async () => {
         try {
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-            console.log(user.user)
+                .then(response => {
+                    console.log(response)
+                    setExpenseServiceUser(expenseService.getUserByUid(response.user.uid))
+                    userData = response.data
+                })
         }
         catch (error) {
             console.log(error.message)
@@ -56,6 +63,13 @@ function Login() {
 
     const logout = async () => {
         await signOut(auth)
+            .then(response => {
+                setExpenseServiceUser({})
+                userData = {
+                    email: "",
+                    id: null,
+                }
+            })
     }
 
 

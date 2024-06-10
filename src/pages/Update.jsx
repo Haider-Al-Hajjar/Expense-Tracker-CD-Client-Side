@@ -10,11 +10,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as expenseService from '../services/ExpenseService';
-
 import { useNavigate } from "react-router-dom";
+import Context from "../components/Context";
+import { useContext } from "react";
 
 const theme = createTheme();
-
 export const Update = () => {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -26,6 +26,7 @@ export const Update = () => {
     const [lastUpdatedDateOfExpense, setLastUpdatedDateOfExpense] = useState('')
 
     useEffect(() => {
+
         expenseService.getById(id)
             .then(response => {
                 const user = response.data;
