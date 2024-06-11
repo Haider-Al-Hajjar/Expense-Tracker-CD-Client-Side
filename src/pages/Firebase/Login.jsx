@@ -34,7 +34,7 @@ function Login() {
                 .then(response => {
                     console.log(response.data)
                     setExpenseServiceUser(response.data)
-                    userData.email = response.data.email
+                    userData = response.data
 
                 }).then(response => {
                     navigate(`/${expenseServiceUser.id}`)
@@ -54,6 +54,8 @@ function Login() {
                     console.log(response)
                     setExpenseServiceUser(expenseService.getUserByUid(response.user.uid))
                     userData = response.data
+                }).then(response => {
+                    navigate(`/${expenseServiceUser.id}`)
                 })
         }
         catch (error) {
@@ -65,10 +67,7 @@ function Login() {
         await signOut(auth)
             .then(response => {
                 setExpenseServiceUser({})
-                userData = {
-                    email: "",
-                    id: null,
-                }
+                userData = {}
             })
     }
 

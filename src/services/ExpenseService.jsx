@@ -29,5 +29,5 @@ export function getUserById(id) {
     return axios.get(`${BASE_API_URL}user/${id}`)
 }
 export function getUserByUid(uid) {
-    return axios.get(`${BASE_API_URL}user/${uid}`)
+    return axios.get(`${BASE_API_URL}user/uid/${uid}`)
 }
