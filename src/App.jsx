@@ -6,17 +6,13 @@ import { NoContent } from "./pages/NoContent";
 import { Update } from "./pages/Update";
 import { Add } from "./pages/Add";
 import Login from "./pages/Firebase/Login";
-import Context from "./components/Context";
+import { UserProvider } from "./components/UserContext";
+import { useState } from "react";
 function App() {
-  const userInfo = {
-    name: "Johnny",
-    email: "test@gmail.com",
-    loggedIn: false,
 
-  }
   return (
     <Container maxWidth="md">
-      <Context.Provider value={userInfo}>
+      <UserProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Expense />} />
@@ -25,10 +21,9 @@ function App() {
             <Route path="*" element={<NoContent />} />
             <Route path="/login" element={<Login />} />
             <Route path="/:id" element={<Expense />} />
-
           </Routes>
         </BrowserRouter>
-      </Context.Provider>
+      </UserProvider>
     </Container>
   );
 }

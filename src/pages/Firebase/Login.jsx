@@ -3,7 +3,7 @@ import { auth } from "./firebase-config";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as expenseService from '../../services/ExpenseService';
-import Context from "../../components/Context";
+import Context from "../../components/UserContext";
 
 
 function Login() {
@@ -12,7 +12,7 @@ function Login() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [firebaseUser, setFirebaseUser] = useState({});
-    const [expenseServiceUser, setExpenseServiceUser] = useState();
+    // const [expenseServiceUser, setExpenseServiceUser] = useState();
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setFirebaseUser(currentUser);
@@ -20,7 +20,6 @@ function Login() {
         })
     }, [])
     const navigate = useNavigate();
-    let userData = useContext(Context)
     const register = async () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
@@ -33,11 +32,10 @@ function Login() {
             expenseService.createUser(userToBeCreated)
                 .then(response => {
                     console.log(response.data)
-                    setExpenseServiceUser(response.data)
-                    userData = response.data
-
+                    // setExpenseServiceUser(response.data)
+                    setUserData(response.data)
                 }).then(response => {
-                    navigate(`/${expenseServiceUser.id}`)
+                    navigate(`/${userData.id}`)
                 })
 
             // save response to a use state with a new user variable & link back to the app page with the id of that user.
@@ -52,10 +50,9 @@ function Login() {
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
                 .then(response => {
                     console.log(response)
-                    setExpenseServiceUser(expenseService.getUserByUid(response.user.uid))
-                    userData = response.data
+                    setContext(expenseService.getUserByUid(response.user.uid))
                 }).then(response => {
-                    navigate(`/${expenseServiceUser.id}`)
+                    navigate(`/${userData.id}`)
                 })
         }
         catch (error) {
@@ -67,7 +64,7 @@ function Login() {
         await signOut(auth)
             .then(response => {
                 setExpenseServiceUser({})
-                userData = {}
+                setContext()
             })
     }
 
