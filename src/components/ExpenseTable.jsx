@@ -11,12 +11,12 @@ import {
     TableHead,
     TableRow,
 } from '@mui/material';
-import UserContext from './UserContext';
-import { setUserId } from 'firebase/analytics';
-
+import { UserContext } from './UserContext';
 export const ExpenseTable = () => {
-    const { userID } = useContext(UserContext)
-    const [expense, setExpense] = useState([]); // at the bottom, get Price & description working after Jose fixes up the back end.
+    const { userId, setUserId } = useContext(UserContext)
+    console.log(UserContext)
+    console.log("user ID", userId)
+    const [expense, setExpense] = useState([])
     const navigate = useNavigate();
     useEffect(() => {
         expenseService.getAllExpense()
@@ -41,8 +41,8 @@ export const ExpenseTable = () => {
     }
     return (
         <div >
-            <p> Current email = {userID}</p>
-            <button onClick={() => setUserId(1)}> increment ID</button>
+            <p> Current email = {userId}</p>
+            <button onClick={() => setUserId(2)}> increment ID</button>
             <Table sx={{ minWidth: 1000 }} style={{ maxWidth: 1200 + "px", backgroundcolor: "gray", fontSize: 2000 + "px", color: "white" }}>
                 <TableHead sx={{}}>
                     <TableRow>

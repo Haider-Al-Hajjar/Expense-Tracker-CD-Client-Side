@@ -3,10 +3,11 @@ import { auth } from "./firebase-config";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as expenseService from '../../services/ExpenseService';
-import Context from "../../components/UserContext";
+import { UserContext } from "../../components/UserContext";
 
 
 function Login() {
+    const { userId, setUserId } = useContext(UserContext)
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     const [loginEmail, setLoginEmail] = useState("");
@@ -32,10 +33,8 @@ function Login() {
             expenseService.createUser(userToBeCreated)
                 .then(response => {
                     console.log(response.data)
-                    // setExpenseServiceUser(response.data)
-                    setUserData(response.data)
                 }).then(response => {
-                    navigate(`/${userData.id}`)
+                    console.log("SHOULD NAV TO HOMEPAGE/USERID")
                 })
 
             // save response to a use state with a new user variable & link back to the app page with the id of that user.
@@ -52,7 +51,7 @@ function Login() {
                     console.log(response)
                     setContext(expenseService.getUserByUid(response.user.uid))
                 }).then(response => {
-                    navigate(`/${userData.id}`)
+                    console.log("SHOULD NAVIGATE TO HOMEPAGE WITH /USERID")
                 })
         }
         catch (error) {

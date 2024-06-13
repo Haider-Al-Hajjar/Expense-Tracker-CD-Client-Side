@@ -1,14 +1,13 @@
 import { createContext, useState } from "react";
 
-const UserContext = createContext()
+export const UserContext = createContext()
 
 
 export function UserProvider({ children }) {
-    const [items, setItems] = useState()
+    const [userId, setUserId] = useState("test")
     return (
-        <UserContext.Provider value={{ userID: 1 }}>
+        <UserContext.Provider value={{ userId, setUserId }}>
             {children}
         </UserContext.Provider>
     )
 }
-export default UserContext
