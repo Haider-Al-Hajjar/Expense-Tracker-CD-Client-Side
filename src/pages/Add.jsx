@@ -41,6 +41,7 @@ export function Add() {
     };
 
     return (
+        <div className="user-add">
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
@@ -120,5 +121,6 @@ export function Add() {
                 </Box>
             </Container>
         </ThemeProvider >
+            </div>
     )
 };

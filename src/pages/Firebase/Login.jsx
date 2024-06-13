@@ -69,6 +69,7 @@ function Login() {
 
 
     return (
+        <div className="login-add">
         <div>
             <div>
                 <h3> Register User</h3>
@@ -95,6 +96,7 @@ function Login() {
             {firebaseUser?.email}
             <button onClick={logout}>Sign Out </button>
         </div>
+            </div>
     )
 }
 
