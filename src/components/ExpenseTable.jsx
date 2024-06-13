@@ -40,7 +40,7 @@ export const ExpenseTable = () => {
             })
     }
     return (
-        <div >
+        <div className='table-container'>
             <p> Current email = {userID}</p>
             <button onClick={() => setUserId(1)}> increment ID</button>
             <Table sx={{ minWidth: 1000 }} style={{ maxWidth: 1200 + "px", backgroundcolor: "gray", fontSize: 2000 + "px", color: "white" }}>
